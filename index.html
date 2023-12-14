@@ -7,22 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <!-- Custom styles -->
-    <style>
-        body {
-            padding-top: 70px; /* Adjusted for fixed navbar */
-        }
-        footer {
-            background-color: #7c7c7c; /* Dark purple footer background color */
-            color: #fff;
-            text-align: center;
-            padding: 5px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+
+    <script crossorigin="anonymous" src="https://d3js.org/d3.v6.min.js"></script>
+
 </head>
 <body>
 
@@ -54,10 +43,73 @@
     </nav>
 
     <!-- Page content -->
-    
+    <h1> Life expectancy </h1>
+    <div id="tooltip"></div>
+    <div class="container mt-5">
+        <!-- Input for year -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <label for="yearRange">Year</label>
+                <input type="range" class="custom-range" id="yearRange" min="2000" max="2015" step="1">
+                <p><span id="selectedYear">2010</span></p>
+            </div>
+        </div>
 
-     <!-- Footer -->
-     <footer>
+        <section>
+            <h2>Viz 1</h2>
+            <p>
+                <b> Map </b> of life expectancy around the world with <b> linechart </b> tooltip.
+            </p>
+            <div id="chart1" class="chart-container">
+                <!-- <script src="JavaScript/chart1.js"></script> -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Viz 2</h2>
+            <p>
+                Horizontal <b> bar chart </b> with button to select order (ascendent or descendent) to visualize countries
+                with most/least life expectancy.
+            </p>
+            <div id="chart2" class="chart-container">
+                <!-- <script src="JavaScript/chart2.js"></script> -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Viz 3</h2>
+            <p>
+                <b> Box plots </b> of underdeveloped countries and derdeveloped countries lifes expectancy.
+            </p>
+            <div id="chart3" class="chart-container">
+                <!-- <script src="JavaScript/chart3.js"></script> -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Viz 4</h2>
+            <p>
+                <b> Scatter plot </b> to visualize relations between life expectancy and economic factors
+            </p>
+            <div id="chart4" class="chart-container">
+                <!-- <script src="JavaScript/chart4.js"></script> -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Viz 5</h2>
+            <p>
+                
+            </p>
+            <div id="chart5" class="chart-container">
+                <!-- <script src="JavaScript/chart5.js"></script> -->
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer>
         Francisco García Barrada
     </footer>
 
@@ -65,5 +117,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        const yearRange = document.getElementById('yearRange');
+        const selectedYear = document.getElementById('selectedYear');
+
+        yearRange.addEventListener('input', function() {
+            selectedYear.textContent = yearRange.value;
+        });
+    </script>
 </body>
 </html>
