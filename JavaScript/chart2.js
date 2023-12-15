@@ -2,9 +2,9 @@ var tooltip = d3.select("#tooltip");
 
 var svg;
 var x, y;
-var currentFilter = getTop10; // Inicializar con Top 10
+var currentFilter = getTop10; // Initialize with Top 10
 
-// Definir márgenes en un ámbito global
+// Define margins in a global scope
 var margin = {top: 20, right: 70, bottom: 20, left: 50};
 
 function getWidth() {
@@ -14,7 +14,7 @@ function getWidth() {
 
 function initializeChart() {
     var width = getWidth();
-    var height = 2100 - margin.top - margin.bottom; // Altura inicial para Top 10 y Bottom 10
+    var height = 2100 - margin.top - margin.bottom; // Initial height for Top 10 and Bottom 10
 
     svg = d3.select("#chart2")
         .append("svg")
@@ -34,81 +34,81 @@ function initializeChart() {
 }
 
 function updateBarChart(selectedYear) {
-    d3.csv('datasets/LifeExpectancyShort.csv').then(function(data) {
+    d3.csv('../datasets/LifeExpectancyShort.csv').then(function(data) {
         var width = getWidth();
 
         var filteredData = currentFilter(data.filter(d => d.Year == selectedYear));
 
-        // Ajustar la altura y estilo del contenedor
+        // Adjust container height and style
         var height = (currentFilter === getAllData) ? 2100 : 400;
         height -= margin.top + margin.bottom;
 
-        // Ajustar el tamaño del SVG y la escala Y
+        // Adjust SVG size and Y scale
         svg.attr("height", height + margin.top + margin.bottom);
         y.range([0, height]);
         svg.select(".x-axis").attr("transform", "translate(0," + height + ")");
 
-        // Actualizar escalas
+        // Update scales
         x.range([0, width]);
         x.domain([0, d3.max(filteredData, d => +d['Life expectancy '])]);
         y.domain(filteredData.map(d => d.Country));
 
-        // Actualizar los ejes
+        // Update axes
         svg.select(".x-axis").call(d3.axisBottom(x));
         svg.select(".y-axis").call(d3.axisLeft(y));
 
-        // Ocultar etiquetas del eje Y
+        // Hide Y-axis labels
         svg.selectAll(".y-axis text").style("opacity", 0);
 
-        // Seleccionar y actualizar las barras
+        // Select and update bars
         var bars = svg.selectAll("rect")
             .data(filteredData, d => d.Country);
 
-        // Transición para barras existentes
+        // Transition for existing bars
         bars.transition()
             .duration(800)
             .attr("y", d => y(d.Country))
             .attr("width", d => x(d['Life expectancy ']))
-            .attr("height", y.bandwidth()); // Actualizar la altura
+            .attr("height", y.bandwidth());
 
-        // Agregar nuevas barras
+        // Add new bars
         bars.enter().append("rect")
             .attr("x", x(0))
             .attr("y", d => y(d.Country))
-            .attr("height", y.bandwidth()) // Establecer la altura
+            .attr("height", y.bandwidth())
             .attr("fill", "#3081D0")
             .transition()
             .duration(800)
             .attr("width", d => x(d['Life expectancy ']));
 
-        // Seleccionar y actualizar el texto para cada barra
+        // Select and update text for each bar
         var barText = svg.selectAll(".bar-text")
         .data(filteredData, d => d.Country);
 
-        // Transición para el texto existente
+        // Transition for existing text
         barText.transition()
             .duration(800)
             .attr("y", d => y(d.Country) + y.bandwidth() / 2)
-            .attr("x", 5) // Un poco a la derecha del inicio de la barra
+            .attr("x", 5)
             .text(d => `${d.Country}`);
 
-        // Agregar nuevo texto para nuevas barras
+        // Add new text for new bars
         barText.enter().append("text")
             .attr("class", "bar-text")
             .attr("y", d => y(d.Country) + y.bandwidth() / 2)
             .attr("x", 5)
-            .attr("dy", ".35em") // Centrar verticalmente
+            .attr("dy", ".35em")
             .text(d => `${d.Country}`)
-            .attr("fill", "white") // Color del texto
-            .style("font-size", "9px"); // Tamaño de fuente más pequeño
+            .attr("fill", "white")
+            .style("font-size", "9px");
 
-        // Eliminar texto que ya no se necesita
+        // Remove text that is no longer needed
         barText.exit().remove();
 
-        // Eliminar barras que ya no se necesitan
+        // Remove bars that are no longer needed
         bars.exit().remove();
 
-        // Eventos del mouse
+        // Mouse events
         svg.selectAll("rect")
             .on("mouseover", function(event, d) {
                 tooltip.style("display", "block");
@@ -130,17 +130,17 @@ function updateBarChart(selectedYear) {
             });
     });
 
-    // Aplicar estilo scrolleable si el filtro es "Show All"
+    // Apply scrollable style if the filter is "Show All"
     var chartContainer = document.getElementById('chart2');
     if (currentFilter === getAllData) {
         chartContainer.classList.add('scrollable');
     } else {
         chartContainer.classList.remove('scrollable');
-        chartContainer.style.maxHeight = null; // Restablecer la altura máxima
+        chartContainer.style.maxHeight = null; // Reset maximum height
     }
 }
 
-// Funciones de Filtrado
+// Filtering Functions
 function getTop10(data) {
     return data.sort((a, b) => b['Life expectancy '] - a['Life expectancy ']).slice(0, 10);
 }
@@ -153,7 +153,7 @@ function getAllData(data) {
     return data;
 }
 
-// Manejadores de eventos para radio buttons
+// Event handlers for radio buttons
 document.querySelectorAll('input[name="filter"]').forEach(radio => {
     radio.addEventListener('change', function() {
         switch(this.value) {
@@ -171,18 +171,16 @@ document.querySelectorAll('input[name="filter"]').forEach(radio => {
     });
 });
 
-// Inicializar el gráfico con Top 10
+// Initialize the chart with Top 10
 initializeChart();
 updateBarChart(document.getElementById('yearRange').value);
 
-// Escuchar cambios en el control deslizante de año
+// Listen for changes in the year slider
 document.getElementById('yearRange').addEventListener('input', function() {
     updateBarChart(this.value);
 });
 
-// Actualizar el gráfico cuando cambie el tamaño de la ventana
+// Update the chart when the window size changes
 window.addEventListener('resize', function() {
     updateBarChart(document.getElementById('yearRange').value);
 });
-
-

@@ -1,7 +1,7 @@
 var tooltip = d3.select("#tooltip");
 
 // Load countries GeoJSON files
-d3.json('datasets/countries.geojson').then(function(geojsonData) {
+d3.json('../datasets/countries.geojson').then(function(geojsonData) {
     // Select the element where the map will be displayed
     var container = d3.select("#chart1");
     var svg = container.append("svg");
@@ -109,7 +109,7 @@ d3.json('datasets/countries.geojson').then(function(geojsonData) {
     }
 
     // Load the CSV file and update the map based on the selected year
-    d3.csv('datasets/LifeExpectancyUpdated.csv').then(function(lifeExpectancyData) {
+    d3.csv('../datasets/LifeExpectancyUpdated.csv').then(function(lifeExpectancyData) {
         function updateMapForYear(selectedYear) {
             // Filter data by the selected year
             var filteredData = lifeExpectancyData.filter(function(d) {

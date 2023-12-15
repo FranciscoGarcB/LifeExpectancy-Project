@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Expectancy Project - Prueba</title>
+    <title>Life Expectancy Analysis</title>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="Icons/apple-touch-icon.png">
@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 
     <!-- Frameworks -->
     <script crossorigin="anonymous" src="https://d3js.org/d3.v6.min.js"></script>
@@ -39,19 +39,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#chart1"> Map <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="home.html""> About <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Viz 2</a>
+                    <a class="nav-link" href="#"> Dataset </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Viz 3</a>
+                    <a class="nav-link" href="#">Analysis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Viz 4</a>
+                    <a class="nav-link" href="#">Conclusion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Viz 5</a>
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
         </div>
@@ -64,16 +64,20 @@
         <section>
             <h2>By country</h2>
             <p>
-                <b> Map </b> of life expectancy around the world with <b> linechart </b> tooltip.
+                <b> Choropleth map </b> of life expectancy around the world with <b> linechart </b> tooltip.
+                Some countries are not included on the dataset (greyed out on the map).
             </p>
-            <div id="chart1" class="chart-container"></div>
+            <div id="chart1" class="chart-container">
+                
+            </div>
         </section>
 
         <section>
-            <h2>Bar Chart</h2>
+            <h2></h2>
             <p>
                 Different buttons to see the countries with most and least life expectancy each year.
-                The <b>show all</b> filter makes the div scrollable to make it possible to see all countries.
+                The <b>show all</b> button makes the chart container scrollable to make it possible to 
+                see all countries. A tooltip show interesting information of social factors of the country.
             </p>
             <div id="chart2" class="chart-container scrollable">
                 <div class="radio-button-container">
@@ -89,7 +93,8 @@
                   <div class="radio-button-container">
                     <input type="radio" id="showAll" name="filter" value="showAll" class="hidden-radio">
                     <label for="showAll" class="button-4">Show All</label>
-                  </div> 
+                  </div>
+                  
             </div>
         </section>
 
@@ -179,8 +184,10 @@
 
 
     <!-- Visualization scripts -->
-    <script src="JavaScript/chart1.js"></script>
-    <script src="JavaScript/chart2.js"></script>
+    <script src="../JavaScript/chart1.js"></script>
+    <script src="../JavaScript/chart2.js"></script> 
+    <script src="../JavaScript/chart3.js"></script> 
+    <script src="../JavaScript/chart4.js"></script> 
 
 </body>
 </html>
