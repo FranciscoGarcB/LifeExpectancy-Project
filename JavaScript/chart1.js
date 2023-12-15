@@ -30,32 +30,28 @@ d3.json('../datasets/countries.geojson').then(function(geojsonData) {
     updateMapSize();
     window.addEventListener("resize", updateMapSize);
 
-    var legendHeight = 150; // Height of the legend
-    var legendWidth = 20;
-    var legendMargin = { left: 20, top: 20, right: 5, bottom: 5 };
+    // Configurar la posición y dimensiones de la leyenda
+var legendWidth = 300; // Ancho de la leyenda
+var legendHeight = 20; // Altura de la leyenda
+var legendMargin = { top: 550, right: 20, left: 50, bottom: 0 };
 
-    // Position the legend inside the SVG
-    var legendXPosition = legendMargin.left;
-    var legendYPosition = legendMargin.top;
+// Calcular la posición de la leyenda
+var legendXPosition = (container.node().getBoundingClientRect().width - legendWidth) / 2;
+var legendYPosition = legendMargin.top;
 
-    // Create the legend
-    var legend = svg.append("g")
-        .attr("id", "legend")
-        .attr("transform", "translate(" + legendXPosition + "," + legendYPosition + ")");
+// Crear la leyenda
+var legend = svg.append("g")
+    .attr("id", "legend")
+    .attr("transform", "translate(" + legendXPosition + "," + legendYPosition + ")");
 
-    // Define a scale for the legend
-    var legendScale = d3.scaleLinear()
-        .range([legendHeight, 0]);
+// Definir una escala para la leyenda (horizontal)
+var legendScale = d3.scaleLinear()
+    .range([0, legendWidth]);
 
-    // Add the axis to the legend (without scale for now)
-    var legendAxis = d3.axisRight(legendScale);
-    legend.append("g")
-        .attr("transform", "translate(" + legendWidth + ",0)")
-        .attr("class", "legend-axis");
 
     var lifeExpectancyDataByCountry = {};
 
-    d3.csv('datasets/LifeExpectancyUpdated.csv').then(function(lifeExpectancyData) {
+    d3.csv('../datasets/LifeExpectancyUpdated.csv').then(function(lifeExpectancyData) {
         lifeExpectancyData.forEach(function(d) {
             if (!lifeExpectancyDataByCountry[d.Country]) {
                 lifeExpectancyDataByCountry[d.Country] = [];
@@ -163,32 +159,39 @@ d3.json('../datasets/countries.geojson').then(function(geojsonData) {
                     tooltip.style("display", "none").html("");
                 });
 
-            // Update the legend scale
+            // Update legend scale
             legendScale.domain(d3.extent(filteredData, function(d) { return +d['Life expectancy ']; }));
 
-            // Invert the way legend rectangles' values are calculated
             var legendRects = legend.selectAll("rect")
-                .data(colorScale.ticks().map(function(d, i, ticks) {
+                .data(colorScale.ticks(6).map(function(d, i, ticks) {
                     return {
-                        y0: legendHeight - (i + 1) / ticks.length * legendHeight,
-                        y1: legendHeight - i / ticks.length * legendHeight,
+                        x0: i / ticks.length * legendWidth,
+                        x1: (i + 1) / ticks.length * legendWidth,
                         z: d
                     };
                 }));
 
             legendRects.enter().append("rect")
                 .merge(legendRects)
-                .attr("y", function(d) { return d.y0; })
-                .attr("height", function(d) { return d.y1 - d.y0; })
-                .attr("width", legendWidth)
-                .style("fill", function(d) { return colorScale(d.z); });
+                    .attr("x", function(d) { return d.x0; })
+                    .attr("width", function(d) { return d.x1 - d.x0; })
+                    .attr("height", legendHeight)
+                    .style("fill", function(d) { return colorScale(d.z); });
 
             legendRects.exit().remove();
 
-            // Update the legend axis
-            legend.select(".legend-axis").call(legendAxis);
+            // Add new axis
+            legend.select(".legend-axis").remove();
+            legend.append("g")
+                .attr("class", "legend-axis")
+                .attr("transform", "translate(0," + legendHeight + ")")
+                .call(d3.axisBottom(legendScale)
+                    .ticks(5)
+                    .tickFormat(d3.format(".1f")));
+                
         }
 
+                
         // Listen for changes in the year slider
         document.getElementById('yearRange').addEventListener('input', function() {
             updateMapForYear(this.value);
