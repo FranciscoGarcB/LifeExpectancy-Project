@@ -5,7 +5,7 @@ var x, y;
 var currentFilter = getTop10; // Inicializar con Top 10
 
 // Definir márgenes en un ámbito global
-var margin = {top: 20, right: 130, bottom: 20, left: 150};
+var margin = {top: 20, right: 70, bottom: 20, left: 50};
 
 function getWidth() {
     var containerWidth = document.getElementById('chart2').getBoundingClientRect().width;
@@ -57,6 +57,9 @@ function updateBarChart(selectedYear) {
         svg.select(".x-axis").call(d3.axisBottom(x));
         svg.select(".y-axis").call(d3.axisLeft(y));
 
+        // Ocultar etiquetas del eje Y
+        svg.selectAll(".y-axis text").style("opacity", 0);
+
         // Seleccionar y actualizar las barras
         var bars = svg.selectAll("rect")
             .data(filteredData, d => d.Country);
@@ -78,6 +81,30 @@ function updateBarChart(selectedYear) {
             .duration(800)
             .attr("width", d => x(d['Life expectancy ']));
 
+        // Seleccionar y actualizar el texto para cada barra
+        var barText = svg.selectAll(".bar-text")
+        .data(filteredData, d => d.Country);
+
+        // Transición para el texto existente
+        barText.transition()
+            .duration(800)
+            .attr("y", d => y(d.Country) + y.bandwidth() / 2)
+            .attr("x", 5) // Un poco a la derecha del inicio de la barra
+            .text(d => `${d.Country}`);
+
+        // Agregar nuevo texto para nuevas barras
+        barText.enter().append("text")
+            .attr("class", "bar-text")
+            .attr("y", d => y(d.Country) + y.bandwidth() / 2)
+            .attr("x", 5)
+            .attr("dy", ".35em") // Centrar verticalmente
+            .text(d => `${d.Country}`)
+            .attr("fill", "white") // Color del texto
+            .style("font-size", "9px"); // Tamaño de fuente más pequeño
+
+        // Eliminar texto que ya no se necesita
+        barText.exit().remove();
+
         // Eliminar barras que ya no se necesitan
         bars.exit().remove();
 
@@ -85,7 +112,10 @@ function updateBarChart(selectedYear) {
         svg.selectAll("rect")
             .on("mouseover", function(event, d) {
                 tooltip.style("display", "block");
-                tooltip.html("Country: " + d.Country + "<br/>Life Expectancy: " + d['Life expectancy '])
+                tooltip.html("<b>" + d.Country + "</b>" + 
+                    "<br/>Life Expectancy: " + d['Life expectancy '] +
+                    "<br/>Adult Mortality: " + d['Adult Mortality'] +
+                    "<br/>infant deaths: " + d['infant deaths'])
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY + 10) + "px");
                 d3.select(this).attr("fill", "#F4F27E");
