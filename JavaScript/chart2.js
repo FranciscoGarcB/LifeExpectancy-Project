@@ -34,7 +34,7 @@ function initializeChart() {
 }
 
 function updateBarChart(selectedYear) {
-    d3.csv('../datasets/LifeExpectancyShort.csv').then(function(data) {
+    d3.csv('../datasets/LifeExpectancy.csv').then(function(data) {
         var width = getWidth();
 
         var filteredData = currentFilter(data.filter(d => d.Year == selectedYear));
