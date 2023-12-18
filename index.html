@@ -16,30 +16,23 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="../style.css">
 
-    <!-- Frameworks -->
+    <!-- D3.js for Visualizations -->
     <script crossorigin="anonymous" src="https://d3js.org/d3.v6.min.js"></script>
 
     <!-- Custom fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Merriweather+Sans:wght@700&family=Merriweather&display=swap" rel="stylesheet">
+</head>
+<body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background-color: #6DB9EF !important;">
-        <a class="navbar-brand" href="index.html" id="topTitle">Data Visualization</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background-color: #788082 !important;">
+        <a class="navbar-brand" href="index.html">Data Visualization</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html""> About <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="HTML/analysis.html">Analysis</a>
@@ -51,18 +44,62 @@
         </div>
     </nav>
 
-    <!-- Page content -->
-    
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1>Life Expectancy Project</h1>
+        <p>This project explores the various factors influencing life expectancy across the globe. By analyzing data from the World Health Organization, we aim to uncover trends and insights into what affects our lifespan.</p>
+        <h3>About the Dataset</h3>
+        <p>The dataset used in this project is provided by the World Health Organization and is available on <a href="https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who">Kaggle</a>. 
+            It includes various indicators from countries around the world, spanning several years, and covers aspects such as economic, health, and environmental factors.</p>
 
-    <footer>
+        <p> Here are presented and explained the most used attributes of the dataset on this analysis (hovering over any container
+            pops the explanation). </p>
+        
+        <!-- Dataset Columns Descriptions -->
+        <div class="d-flex justify-content-center flex-wrap"">
+            <div class="col-md-4 column-space" data-toggle="tooltip" data-placement="top" 
+            title="Life expectancy in age (years)">
+                <div class="column-title">Life expectancy</div>
+            </div>
+            <div class="col-md-4 column-space" data-toggle="tooltip" data-placement="top" 
+            title="Adult Mortality Rates of both sexes (probability of dying between 15 and 60 years per 1000 population)">
+                <div class="column-title">Adult mortality</div>
+            </div>
+            <div class="col-md-4 column-space" data-toggle="tooltip" data-placement="top" 
+            title="Number of Infant Deaths per 1000 population">
+                <div class="column-title">Infant deaths</div>
+            </div>
+            <div class="col-md-4 column-space" data-toggle="tooltip" data-placement="top" 
+            title="Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)">
+                <div class="column-title">Alcohol</div>
+            </div>
 
+            <div class="col-md-4 column-space" data-toggle="tooltip" data-placement="top" 
+            title="General government expenditure on health as a percentage of total government expenditure">
+                <div class="column-title">Total expenditure</div>
+            </div>
+        </div>
+        
+        <p style="margin-bottom: 20%;">
+            Discover more in the detailed <a href="HTML/analysis.html">Analysis Section</a>, 
+            where we go into graphical representations and interpretations of this data.
+        </p>
+
+    </div>
+
+    <footer id="credits">
+        Made by Francisco García Barrada for Data Visualization course project on
+        University of Genoa
     </footer>
 
-    <!-- Bootstrap JS and dependencies (Popper.js) -->
-    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
-    
+    <!-- Bootstrap JS and Dependencies -->
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip(); 
+        });
+    </script>        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

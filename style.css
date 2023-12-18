@@ -14,6 +14,18 @@ footer {
     z-index: 1;
 }
 
+#credits {
+    color: #ffffff;
+    background-color: #7c7c7c;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 #topTile {
     font-family: 'Merriweather Sans', sans-serif;
 }
@@ -104,6 +116,24 @@ input{
     z-index: 3;
 }
 
+.column-space {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.column-space:hover {
+    transform: scale(1.1);
+    background-color: #f8f8f8;
+}
+
+.column-title {
+    font-weight: bold;
+}
 
 /* CSS */
 .button-4 {
