@@ -1,3 +1,4 @@
+(function() {
 var tooltip = d3.select("#tooltip");
 
 var svg;
@@ -64,6 +65,9 @@ function updateBarChart(selectedYear) {
         var bars = svg.selectAll("rect")
             .data(filteredData, d => d.Country);
 
+        // Define color based on the 'Status'
+        var colorMap = { "Developed": "#3081D0", "Developing": "#7E1717" };
+
         // Transition for existing bars
         bars.transition()
             .duration(800)
@@ -76,7 +80,7 @@ function updateBarChart(selectedYear) {
             .attr("x", x(0))
             .attr("y", d => y(d.Country))
             .attr("height", y.bandwidth())
-            .attr("fill", "#3081D0")
+            .attr("fill", d => colorMap[d.Status])
             .transition()
             .duration(800)
             .attr("width", d => x(d['Life expectancy ']));
@@ -126,7 +130,7 @@ function updateBarChart(selectedYear) {
             })
             .on("mouseout", function() {
                 tooltip.style("display", "none");
-                d3.select(this).attr("fill", "#3081D0");
+                d3.select(this).attr("fill", d => colorMap[d.Status]);;
             });
     });
 
@@ -184,3 +188,4 @@ document.getElementById('yearRange').addEventListener('input', function() {
 window.addEventListener('resize', function() {
     updateBarChart(document.getElementById('yearRange').value);
 });
+})();

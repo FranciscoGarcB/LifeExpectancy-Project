@@ -50,7 +50,8 @@
         <section>
             <h2>By country</h2>
             <p>
-                <b> Choropleth map </b> of life expectancy around the world with <b> linechart </b> tooltip.
+                <b> Choropleth map </b> of life expectancy around the world with 
+                <b> linechart </b> tooltip of the evolution of life expectancy of the country over the years.
                 Some countries are not included on the dataset (greyed out on the map).
             </p>
             <div id="chart1" class="chart-container">
@@ -62,8 +63,11 @@
             <h2></h2>
             <p>
                 Different buttons to see the countries with most and least life expectancy each year.
-                The <b>show all</b> button makes the chart container scrollable to make it possible to 
-                see all countries. A tooltip show interesting information of social factors of the country.
+                The show all button makes the chart container scrollable to make it possible to 
+                see all countries. A tooltip show the exact life expectancy and also important 
+                information of social factors of the country. Bars are divided by 
+                <b><span style="color: #3081D0;">developed</span></b> and <b><span style="color: #7E1717;">developing</span></b>
+                status.
             </p>
             <div id="chart2" class="chart-container scrollable">
                 <div class="radio-button-container">
@@ -85,12 +89,13 @@
         </section>
 
         <section>
-            <h2>Viz 3</h2>
+            <h2>By Status</h2>
             <p>
                 <b> Box plots </b> of developing and developed countries lifes expectancy.
+                This type of visualization is very useful to see the distribution and statistics
+                of the life expectancy of different groups (on this case the status).
             </p>
             <div id="chart3" class="chart-container">
-                <!-- <script src="JavaScript/chart3.js"></script> -->
             </div>
         </section>
 
@@ -172,6 +177,8 @@
     <!-- Visualization scripts -->
     <script src="../JavaScript/chart1.js"></script>
     <script src="../JavaScript/chart2.js"></script>
+    <script src="../JavaScript/chart3.js"></script>
+    
 
 </body>
 </html>
