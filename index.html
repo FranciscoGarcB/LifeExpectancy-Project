@@ -6,15 +6,15 @@
     <title>Life Expectancy Project</title>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="Icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="Icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Icons/favicon-16x16.png">
-    <link rel="manifest" href="Icons/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../Icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Icons/favicon-16x16.png">
+    <link rel="manifest" href="../Icons/site.webmanifest">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 
     <!-- Frameworks -->
     <script crossorigin="anonymous" src="https://d3js.org/d3.v6.min.js"></script>
@@ -42,9 +42,6 @@
                     <a class="nav-link" href="index.html""> About <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="HTML/dataset.html"> Dataset </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="HTML/analysis.html">Analysis</a>
                 </li>
                 <li class="nav-item">
@@ -55,91 +52,10 @@
     </nav>
 
     <!-- Page content -->
-    <h1> Life expectancy </h1>
-    <div id="tooltip"></div>
-    <div class="container mt-5">
-        <section>
-            <h2>By country</h2>
-            <p>
-                <b> Choropleth map </b> of life expectancy around the world with <b> linechart </b> tooltip.
-                Some countries are not included on the dataset (greyed out on the map).
-            </p>
-            <div id="chart1" class="chart-container">
-                
-            </div>
-        </section>
-
-        <section>
-            <h2></h2>
-            <p>
-                Different buttons to see the countries with most and least life expectancy each year.
-                The <b>show all</b> button makes the chart container scrollable to make it possible to 
-                see all countries. A tooltip show interesting information of social factors of the country.
-            </p>
-            <div id="chart2" class="chart-container scrollable">
-                <div class="radio-button-container">
-                    <input type="radio" id="top10" name="filter" value="top10" class="hidden-radio">
-                    <label for="top10" class="button-4">Top 10</label>
-                  </div>
-                  
-                  <div class="radio-button-container">
-                    <input type="radio" id="bottom10" name="filter" value="bottom10" class="hidden-radio">
-                    <label for="bottom10" class="button-4">Bottom 10</label>
-                  </div>
-                  
-                  <div class="radio-button-container">
-                    <input type="radio" id="showAll" name="filter" value="showAll" class="hidden-radio">
-                    <label for="showAll" class="button-4">Show All</label>
-                  </div>
-                  
-            </div>
-        </section>
-
-        <section>
-            <h2>Viz 3</h2>
-            <p>
-                <b> Box plots </b> of underdeveloped countries and derdeveloped countries lifes expectancy.
-            </p>
-            <div id="chart3" class="chart-container">
-                <!-- <script src="JavaScript/chart3.js"></script> -->
-            </div>
-        </section>
-
-        <section>
-            <h2>Viz 4</h2>
-            <p>
-                <b> Scatter plot </b> to visualize relations between life expectancy and economic factors
-            </p>
-            <div id="chart4" class="chart-container">
-                <!-- <script src="JavaScript/chart4.js"></script> -->
-            </div>
-        </section>
-
-        <section>
-            <h2>Viz 5</h2>
-            <p>
-                
-            </p>
-            <div id="chart5" class="chart-container">
-                <!-- <script src="JavaScript/chart5.js"></script> -->
-            </div>
-        </section>
-
-        
-    </div>
-
     
 
-    <!-- Footer -->
     <footer>
-        <!-- Input for year -->
-        <div class="row mb-4" id="fixedDiv">
-            <div class="col-12" >
-                <label for="yearRange"></label> <span id="selectedYear">2000</span>
-                <input type="range" class="custom-range" id="yearRange" min="2000" max="2015" step="1" value="2000">
-            </div>
-        </div>
-        F
+
     </footer>
 
     <!-- Bootstrap JS and dependencies (Popper.js) -->
@@ -147,42 +63,6 @@
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     
-    <!-- Show year -->
-    <script>
-        const yearRange = document.getElementById('yearRange');
-        const selectedYear = document.getElementById('selectedYear');
-
-        yearRange.addEventListener('input', function() {
-            selectedYear.textContent = yearRange.value;
-        });
-    </script>
-
-    <!-- Transition to chart containers -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        entry.target.classList.remove('visible');
-                    }
-                });
-            }, {
-                threshold: 0.5 
-            });
-
-            // Take all chart containers
-            document.querySelectorAll('.chart-container').forEach(chart => {
-                observer.observe(chart);
-            });
-        });
-    </script>
-
-
-    <!-- Visualization scripts -->
-<!--     <script src="JavaScript/chart1.js"></script>
-    <script src="JavaScript/chart2.js"></script> -->
-
+    
 </body>
 </html>

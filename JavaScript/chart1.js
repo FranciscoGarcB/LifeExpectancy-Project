@@ -14,7 +14,7 @@ d3.json('../datasets/countries.geojson').then(function(geojsonData) {
         svg.attr("width", width).attr("height", height);
 
         var projection = d3.geoNaturalEarth1()
-            .scale(width / 5.5) // Adjust scale according to width
+            .scale(width / 6) // Adjust scale according to width
             .translate([width / 2, height / 2]);
 
         var path = d3.geoPath().projection(projection);
