@@ -2,8 +2,8 @@
     var container = d3.select("#chart3");
     var containerWidth = container.node().getBoundingClientRect().width;
 
-    var svgWidth = containerWidth * 0.8; // 80% del ancho del contenedor
-    var margin = {top: 10, right: 30, bottom: 30, left: (containerWidth - svgWidth) / 2}, // Ajuste del margen izquierdo para centrar
+    var svgWidth = containerWidth * 0.9; // 80% del ancho del contenedor
+    var margin = {top: 10, right: 30, bottom: 30, left: (containerWidth - svgWidth) / 1.5}, // Ajuste del margen izquierdo para centrar
         width = svgWidth - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
