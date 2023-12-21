@@ -118,8 +118,10 @@ function updateBarChart(selectedYear) {
                 tooltip.style("display", "block");
                 tooltip.html("<b>" + d.Country + "</b>" + 
                     "<br/>Life Expectancy: " + d['Life expectancy '] +
+                    "<br/>GDP: " + d['GDP'] + " $ USD" +
                     "<br/>Adult Mortality: " + d['Adult Mortality'] +
-                    "<br/>Infant deaths: " + d['infant deaths'])
+                    "<br/>Infant deaths: " + d['infant deaths'] +
+                    "<br/>HIV/AIDS: " + d[' HIV/AIDS'])
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY + 10) + "px");
                 d3.select(this).attr("fill", "#F4F27E");

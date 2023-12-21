@@ -34,7 +34,7 @@
                     <a class="nav-link" href="../index.html""> About <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="analysis.html">Analysis</a>
+                    <a class="nav-link" href="visualizations.html">Visualizations</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="conclusion.html">Conclusion</a>
@@ -47,7 +47,7 @@
     <h1> Life expectancy </h1>
     <div id="tooltip"></div>
     <div class="container mt-5">
-        <section>
+        <section id="Schart1">
             <h2>By country</h2>
             <p>
                 <b> Choropleth map </b> of life expectancy around the world with 
@@ -59,7 +59,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="Schart2">
             <h2></h2>
             <p>
                 Different buttons to see the countries with most and least life expectancy each year.
@@ -88,7 +88,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="Schart3">
             <h2>By Status</h2>
             <p>
                 <b> Box plots </b> of developing and developed countries lifes expectancy.
@@ -99,15 +99,15 @@
             </div>
         </section>
 
-        <section>
+        <section id="Schart4">
             <p>
                 <b> Bubble chart </b> to visualize relations between life expectancy and 
                 different factors. The bigger the bubble, the bigger the population.
             </p>
             <div id="chart4" class="chart-container">
                 <select class="styled-select" id="selectFactor">
-                    <option value="GDP">GDP</option>
                     <option value="ICR">Income composition of resources</option>
+                    <option value="GDP">GDP</option>
                     <option value="AdultMortality">Adult Mortality</option>
                     <option value="InfantDeaths">Infant deaths</option>
                     <option value="Alcohol">Alcohol</option>
@@ -120,7 +120,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="Schart5">
             <h2>Viz 5</h2>
             <p>
                <b>Waffle charts</b> of each continent to see the distribution of the life expectancy. 
