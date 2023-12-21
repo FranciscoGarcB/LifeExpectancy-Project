@@ -100,12 +100,25 @@
         </section>
 
         <section>
-            <h2>Viz 4</h2>
             <p>
-                <b> Scatter plot </b> to visualize relations between life expectancy and differente factors.
+                <b> Bubble chart </b> to visualize relations between life expectancy and differente factors.
+                Bubbles are divided by 
+                <b><span style="color: #3081D0;">developed</span></b> and <b><span style="color: #7E1717;">developing</span></b>
+                status.
             </p>
             <div id="chart4" class="chart-container">
-                <!-- <script src="JavaScript/chart4.js"></script> -->
+                <select class="styled-select" id="selectFactor">
+                    <option value="GDP">GDP</option>
+                    <option value="ICR">Income composition of resources</option>
+                    <option value="AdultMortality">Adult Mortality</option>
+                    <option value="InfantDeaths">Infant deaths</option>
+                    <option value="Alcohol">Alcohol</option>
+                    <option value="HepB">Hepatitis B</option>
+                    <option value="Polio">Polio</option>
+                    <option value="HIV">HIV/AIDS</option>
+                    <option value="PercExpend">Percentage expenditure</option>
+                    <option value="TotalExpend">Total expenditure</option>
+                </select>
             </div>
         </section>
 
@@ -114,9 +127,7 @@
             <p>
                <b>Waffle charts</b> of each continent to see the distribution of the life expectancy. 
             </p>
-            <div id="chart5" class="chart-container">
-                <!-- <script src="JavaScript/chart5.js"></script> -->
-            </div>
+            <div id="chart5" class="chart-container"></div>
         </section>
 
         
@@ -133,7 +144,7 @@
                 <input type="range" class="custom-range" id="yearRange" min="2000" max="2015" step="1" value="2000">
             </div>
         </div>
-        F
+        .
     </footer>
 
     <!-- Bootstrap JS and dependencies (Popper.js) -->
@@ -163,7 +174,7 @@
                     }
                 });
             }, {
-                threshold: 0.5 
+                threshold: 0.2 
             });
 
             // Take all chart containers
@@ -178,6 +189,7 @@
     <script src="../JavaScript/chart1.js"></script>
     <script src="../JavaScript/chart2.js"></script>
     <script src="../JavaScript/chart3.js"></script>
+    <script src="../JavaScript/chart4.js"></script>
     
 
 </body>

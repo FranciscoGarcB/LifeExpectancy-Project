@@ -62,8 +62,12 @@ h2, h3, h4{
 
 
 .scrollable {
-    max-height: 500px; /* Altura máxima para hacerlo scrolleable */
-    overflow-y: auto; /* Muestra la barra de desplazamiento solo si es necesario */
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#chart4 svg {
+    width: 100%; 
 }
 
 #chart5 {
@@ -135,7 +139,7 @@ input{
     font-weight: bold;
 }
 
-/* CSS */
+/* Button */
 .button-4 {
   appearance: none;
   background-color: #FAFBFC;
@@ -162,22 +166,17 @@ input{
   word-wrap: break-word;
 }
 
-
-
-/* Buttons */
-
 .hidden-radio {
     display: none;
-  }
+}
   
 .radio-button-container {
-display: inline-block;
+    display: inline-block;
 }
 
 .button-4 {
-display: inline-block;
-cursor: pointer;
-/* Aquí agrega los estilos adicionales que proporcionaste, como background-color, hover, etc. */
+    display: inline-block;
+    cursor: pointer;
 }
 
 .button-4:hover {
@@ -209,4 +208,28 @@ cursor: pointer;
 
 .button-4:-webkit-details-marker {
   display: none;
+}
+
+
+ /* Select tag style */
+ .styled-select {
+    padding: 10px;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    font-size: 14px;
+    color: #333;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    display: block;
+    margin-bottom: 5%;
+}
+
+.styled-select:focus {
+    border-color: #2366ae;
+    box-shadow: 0 0 8px rgba(165, 165, 166, 0.5);
 }
