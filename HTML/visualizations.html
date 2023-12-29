@@ -104,7 +104,7 @@
                 <b> Bubble chart </b> to visualize relations between life expectancy and 
                 different factors. The bigger the bubble, the bigger the population.
             </p>
-            <div id="chart4" class="chart-container">
+            <div id="chart4" class="chart-container" style="margin-top: 0 !important;">
                 <select class="styled-select" id="selectFactor">
                     <option value="ICR">Income composition of resources</option>
                     <option value="GDP">GDP</option>
@@ -118,19 +118,22 @@
                     <option value="TotalExpend">Total expenditure</option>
                 </select>
             </div>
+            2015 data have many missing values (NaN), that's why 
+            filtering on this year you can see that the resulting graph has 
+            very few bubbles.
         </section>
 
-        <section id="Schart5">
+        <!-- <section id="Schart5">
             <h2>Viz 5</h2>
             <p>
                <b>Waffle charts</b> of each continent to see the distribution of the life expectancy. 
             </p>
             <div id="chart5" class="chart-container"></div>
-        </section>
+        </section> -->
 
         
     </div>
-
+    
     
 
     <!-- Footer -->
