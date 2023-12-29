@@ -1,3 +1,4 @@
+(function() {
 var tooltip = d3.select("#tooltip");
 
 // Load countries GeoJSON files
@@ -201,3 +202,4 @@ var legendScale = d3.scaleLinear()
         updateMapForYear(document.getElementById('yearRange').value);
     });
 });
+})();

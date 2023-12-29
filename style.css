@@ -71,8 +71,14 @@ h2, h3, h4{
 }
 
 #chart5 {
-    margin-bottom: 40%;
+    margin-bottom: 10%;
 }
+
+#chart5 svg {
+    width: 100%; 
+}
+
+
 
 .chart-container {
     background-color: #d2d2d234; /* Light gray with low opacity */

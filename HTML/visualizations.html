@@ -21,7 +21,9 @@
 
     <!-- Custom fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Merriweather+Sans:wght@700&family=Merriweather&display=swap" rel="stylesheet">
-    
+</head>
+
+<body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background-color: #788082 !important;">
         <a class="navbar-brand" href="../index.html" id="topTitle">Data Visualization</a>
@@ -84,7 +86,6 @@
                     <input type="radio" id="showAll" name="filter" value="showAll" class="hidden-radio">
                     <label for="showAll" class="button-4">Show All</label>
                   </div>
-                  
             </div>
         </section>
 
@@ -103,6 +104,8 @@
             <p>
                 <b> Bubble chart </b> to visualize relations between life expectancy and 
                 different factors. The bigger the bubble, the bigger the population.
+                2015 data have many missing values (NaN), that's why 
+                filtering on this year somo graphs have very few bubbles.
             </p>
             <div id="chart4" class="chart-container" style="margin-top: 0 !important;">
                 <select class="styled-select" id="selectFactor">
@@ -118,25 +121,23 @@
                     <option value="TotalExpend">Total expenditure</option>
                 </select>
             </div>
-            2015 data have many missing values (NaN), that's why 
-            filtering on this year somo graphs have very few bubbles.
         </section>
 
-        <!-- <section id="Schart5">
-            <h2>Viz 5</h2>
+        <section id="Schart5">
             <p>
-               <b>Waffle charts</b> of each continent to see the distribution of the life expectancy. 
+               <b>Density plot</b> of global life expectancy and the probability of death (KDE).
             </p>
-            <div id="chart5" class="chart-container"></div>
-        </section> -->
-
-        
+            <div id="chart5" class="chart-container">
+                <div class="radio-button-container">
+                    <button class="button-4" id="playButton">Play</button>
+                </div>
+            </div>
+        </section>
     </div>
-    
     
 
     <!-- Footer -->
-    <footer>
+    <footer id="myFooter">
         <!-- Input for year -->
         <div class="row mb-4" id="fixedDiv">
             <div class="col-12" >
@@ -184,12 +185,48 @@
         });
     </script>
 
+    <!-- Hide year range -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var footer = document.getElementById('myFooter');
+            var targetSection = document.getElementById('Schart5');
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.target === targetSection) {
+                        if (entry.isIntersecting) {
+                            footer.style.opacity = '0';
+                            footer.style.transition = 'opacity 0.5s ease';
+                        } else {
+                            footer.style.opacity = '1';
+                            footer.style.transition = 'opacity 0.5s ease';
+                        }
+                    } else {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        } else {
+                            entry.target.classList.remove('visible');
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.2 
+            });
+
+            document.querySelectorAll('.chart-container').forEach(chart => {
+                observer.observe(chart);
+            });
+            observer.observe(targetSection);
+        });
+    </script>
+
 
     <!-- Visualization scripts -->
     <script src="../JavaScript/chart1.js"></script>
     <script src="../JavaScript/chart2.js"></script>
     <script src="../JavaScript/chart3.js"></script>
     <script src="../JavaScript/chart4.js"></script>
+    <script src="../JavaScript/chart5.js"></script>
     
 
 </body>
