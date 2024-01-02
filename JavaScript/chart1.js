@@ -27,29 +27,27 @@ d3.json('../datasets/countries.geojson').then(function(geojsonData) {
             .attr("class", "country");
     }
 
-    // Call updateMapSize initially and when the window size changes
     updateMapSize();
     window.addEventListener("resize", updateMapSize);
 
-    // Configurar la posición y dimensiones de la leyenda
-var legendWidth = 300; // Ancho de la leyenda
-var legendHeight = 20; // Altura de la leyenda
-var legendMargin = { top: 550, right: 20, left: 50, bottom: 0 };
+    // Configure the position and dimensions of the legend
+    var legendWidth = 300; // Width of the legend
+    var legendHeight = 20; // Height of the legend
+    var legendMargin = { top: 550, right: 20, left: 50, bottom: 0 };
 
-// Calcular la posición de la leyenda
-var legendXPosition = (container.node().getBoundingClientRect().width - legendWidth) / 2;
-var legendYPosition = legendMargin.top;
+    // Calculate the position of the legend
+    var legendXPosition = (container.node().getBoundingClientRect().width - legendWidth) / 2;
+    var legendYPosition = legendMargin.top;
 
-// Crear la leyenda
-var legend = svg.append("g")
-    .attr("id", "legend")
-    .attr("transform", "translate(" + legendXPosition + "," + legendYPosition + ")");
+    // Create the legend
+    var legend = svg.append("g")
+        .attr("id", "legend")
+        .attr("transform", "translate(" + legendXPosition + "," + legendYPosition + ")");
 
-// Definir una escala para la leyenda (horizontal)
-var legendScale = d3.scaleLinear()
-    .range([0, legendWidth]);
-
-
+    // Define a scale for the legend (horizontal)
+    var legendScale = d3.scaleLinear()
+        .range([0, legendWidth]);
+        
     var lifeExpectancyDataByCountry = {};
 
     d3.csv('../datasets/LifeExpectancyUpdated.csv').then(function(lifeExpectancyData) {
@@ -125,8 +123,8 @@ var legendScale = d3.scaleLinear()
 
             // Update the colors of countries on the map
             svg.selectAll("path.country")
-                .transition() // Inicia la transición
-        .       duration(200) // Duración de la transición en milisegundos
+                .transition() // Start the transition
+                .duration(200) // Transition duration in milliseconds
                 .attr("fill", function(d) {
                     var countryName = d.properties.name;
                     var lifeExpectancy = lifeExpectancyByCountry[countryName];
@@ -203,3 +201,4 @@ var legendScale = d3.scaleLinear()
     });
 });
 })();
+    

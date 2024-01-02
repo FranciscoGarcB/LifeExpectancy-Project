@@ -45,16 +45,16 @@
         };
     }
 
-     // Crear leyenda de colores
+     // Create color legend
      var colorLegendData = [
         {label: "Developed", color: "#3081D0"},
         {label: "Developing", color: "#7E1717"}
     ];
 
-    // Crear leyenda de colores en la parte superior del gráfico
+    // Create color legend at the top of the chart
     var colorLegend = svg.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(0,-30)"); // Posición de la leyenda
+        .attr("transform", "translate(0,-30)"); // Legend position
 
     colorLegendData.forEach(function(d, i) {
         var legendGroup = colorLegend.append("g")
@@ -74,7 +74,7 @@
             .text(d.label);
     });
 
-    // Agregar etiquetas a los ejes
+    // Add labels to axes
     svg.append("text")
         .attr("transform", "translate(" + (width / 2) + " ," + (height + 10 + margin.bottom / 2) + ")")
         .style("text-anchor", "middle")

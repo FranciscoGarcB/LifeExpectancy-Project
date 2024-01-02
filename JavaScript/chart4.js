@@ -54,7 +54,7 @@
         .attr("class", "x-axis-label")
         .style("font-family", "Merriweather");
 
-    // Create a tooltip element
+    // Tooltip
     var tooltip = d3.select("#tooltip");
 
     // Define a map for factor labels
